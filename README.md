@@ -1,4 +1,7 @@
 # P10 Geophysical Research
+
+![LMU Geophysics](https://www.geophysik.uni-muenchen.de/kopfbild-en.jpg)
+
 ## New Directions in Earthquake Seismology
 
 This course is part of the International Masters Programme in Geophysics at LMU and TUM.
