@@ -18,14 +18,14 @@ To start Binder, click on the botton below:
 - BP your own earthquake
 
 
-✴ Earthquake sequence simulation
+✴ Earthquake sequence simulation (SEAS)
 - Theory of crustal deformation
 - Rate and State friction
 - Seismic and Aseismic slip transients
 - Boundary element method & DIY
 
 
-✴ Dynamic rupture simulation
+✴ Dynamic rupture simulation (DR)
 - Theory of seismic wave propagation
 - and dynamic rupture
 - Discontinuous Galerkin finite-element method
