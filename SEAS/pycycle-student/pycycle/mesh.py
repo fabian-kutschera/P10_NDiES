@@ -23,16 +23,18 @@ class LineElement:
 
         :param theta: Scalar in [-1, 1].
         """
-        # TODO: implement
-        return np.array([0.0, 0.0])
+        # TODO: implement - DONE
+        #return np.array([0.0, 0.0])
+        return self.h * (theta + 1) / 2 + self.a
 
     def basis(self, theta):
         """Basis function evaluated at theta.
 
         :param theta: Scalar in [-1, 1]
         """
-        # TODO: implement
-        return 0.0
+        # TODO: implement (constant in the finite case) - DONE
+        #return 0.0
+        return 1
 
     def factor(self, theta):
         """Integration factor.
@@ -40,8 +42,10 @@ class LineElement:
 
         :param theta: Scalar in [-1, 1]
         """
-        # TODO: implement
-        return 0.0
+        # TODO: implement - DONE
+        #return 0.0
+        #|xi'(theta)| = |self.h / 2| = self.h_norm / 2
+        return self.h_norm / 2
 
     def collocation_point(self):
         """Returns midpoint of line."""
@@ -80,7 +84,8 @@ class InfiniteLineElement:
         :param theta: Scalar in [-1, 1]
         """
         # TODO: implement
-        return 0.0
+        #return 0.0
+        return self.a_norm**2 / theta**2
 
     def factor(self, theta):
         """Integration factor.
