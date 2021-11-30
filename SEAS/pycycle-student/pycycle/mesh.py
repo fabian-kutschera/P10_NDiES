@@ -94,8 +94,8 @@ class InfiniteLineElement:
         # TODO: implement -DONE
         # The basis function is $\frac{|a|^2}{|\xi|^2}$
         #return 0.0 
-        #bas = self.a_norm**2 / (np.linalg.norm(self.a*(theta+3)/(1-theta)))**2
-        bas = self.a_norm**2 / (self.a_norm *(theta+3)/(1-theta))**2
+        #bas = self.a_norm**2 / (self.a_norm *(theta+3)/(1-theta))**2
+        bas = (1-theta)**2 / (theta+3)**2
         return bas
 
 
@@ -107,9 +107,9 @@ class InfiniteLineElement:
         """
         # TODO: implement
         #return 0.0
-        #bas = self.a_norm**2 / (np.linalg.norm(self.a*(theta+3)/(1-theta)))**2
-        bas = self.a_norm**2 / (self.a_norm *(theta+3)/(1-theta))**2
+        bas = (1-theta)**2 / (theta+3)**2
         return bas * self.a_norm * 4 / (theta-1)**2
+    
 
     def collocation_point(self):
         """Returns start point of line."""
