@@ -46,6 +46,7 @@ class LineElement:
         #return 0.0
         #|xi'(theta)| = |self.h / 2| = self.h_norm / 2
         return self.h_norm / 2
+        
 
     def collocation_point(self):
         """Returns midpoint of line."""
@@ -75,17 +76,28 @@ class InfiniteLineElement:
 
         :param theta: Scalar in [-1, 1].
         """
-        # TODO: implement
-        return np.array([0.0, 0.0])
+        # TODO: implement - DONE
+        #return np.array([0.0, 0.0])
+        
+        return self.a*(theta+3)/(1-theta)
+        # Why does the following not work?
+        #constant p(theta)
+        #return self.a * (-2)/(theta - 1)
+        # or with steeper slope
+        #return self.a * (4 + 2*theta)/(1 - theta)
 
     def basis(self, theta):
         """Basis function evaluated at theta.
 
         :param theta: Scalar in [-1, 1]
         """
-        # TODO: implement
-        #return 0.0
-        return self.a_norm**2 / theta**2
+        # TODO: implement -DONE
+        # The basis function is $\frac{|a|^2}{|\xi|^2}$
+        #return 0.0 
+        #bas = self.a_norm**2 / (np.linalg.norm(self.a*(theta+3)/(1-theta)))**2
+        bas = self.a_norm**2 / (self.a_norm *(theta+3)/(1-theta))**2
+        return bas
+
 
     def factor(self, theta):
         """Integration factor.
@@ -94,7 +106,10 @@ class InfiniteLineElement:
         :param theta: Scalar in [-1, 1]
         """
         # TODO: implement
-        return 0.0
+        #return 0.0
+        #bas = self.a_norm**2 / (np.linalg.norm(self.a*(theta+3)/(1-theta)))**2
+        bas = self.a_norm**2 / (self.a_norm *(theta+3)/(1-theta))**2
+        return bas * self.a_norm * 4 / (theta-1)**2
 
     def collocation_point(self):
         """Returns start point of line."""
