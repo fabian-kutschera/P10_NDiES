@@ -172,8 +172,13 @@ class Context:
         :param tau: Traction (scalar)
         :param psi: State (scalar)
         """
-        # TODO: implement
-        return 0.0
+        # TODO: implement - WRONG!!!!
+        #return 0.0
+        a = self.vp.a[f]
+        e = np.exp(psi / a)
+        
+        V = toms748((-tau-f)/e, -tau/e, tau/e, maxiter=100000, xtol=2e-100)
+        return V
 
     def state_law(self, f, V, psi):
         """Evaluate ageing law.
