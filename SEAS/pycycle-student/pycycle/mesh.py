@@ -91,10 +91,10 @@ class InfiniteLineElement:
 
         :param theta: Scalar in [-1, 1]
         """
-        # TODO: implement -DONE
+        # TODO: implement - DONE
         # The basis function is $\frac{|a|^2}{|\xi|^2}$
         #return 0.0 
-        #bas = self.a_norm**2 / (self.a_norm *(theta+3)/(1-theta))**2
+        #bas = self.a_norm**2 / (self.a_norm *(theta+3)/(1-theta))**2  --> simplified to
         bas = (1-theta)**2 / (theta+3)**2
         return bas
 
@@ -105,7 +105,7 @@ class InfiniteLineElement:
 
         :param theta: Scalar in [-1, 1]
         """
-        # TODO: implement
+        # TODO: implement - DONE
         #return 0.0
         bas = (1-theta)**2 / (theta+3)**2
         return bas * self.a_norm * 4 / (theta-1)**2
