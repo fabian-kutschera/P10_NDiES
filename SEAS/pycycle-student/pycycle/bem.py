@@ -11,8 +11,14 @@ def assemble(G, mesh):
     M = len(mesh)
     A = np.ndarray((M, M))
 
-    # TODO: implement
-
+    # TODO: implement - DONE
+    for i in range(M):
+        xc = mesh[i].collocation_point()
+        for j in range(M):
+            K = lambda t: G(xc, mesh[j].xi(t)) * mesh[j].factor(
+                t)
+            # Do not forget to initialize A (= sign instead of +=)
+            A[i, j] = quad(K, -1, 0)[0] + quad(K, 0, 1)[0]
     return A
 
 
