@@ -138,8 +138,16 @@ class Context:
         tau = np.zeros((Nf, ))
         g = np.zeros((N, ))
 
-        # TODO: implement
-
+        # TODO: implement - UNDERSTAND?
+        for f in range(Nf):
+            g[self.map(f)] = (u[f] - self.cp.Vp * time) / 2.0
+        b = self.B @ g
+        t = lu_solve((self.lu, self.piv), b)
+        for i in range(N):
+            f = self.imap(i)
+            if f>= 0:
+                tau[f] = t[i]      
+        
         return self.vp.tau_pre + self.cp.mu * tau
 
     def psi0(self, f):
@@ -172,13 +180,17 @@ class Context:
         :param tau: Traction (scalar)
         :param psi: State (scalar)
         """
-        # TODO: implement - WRONG!!!!
+        # TODO: implement - DONE
         #return 0.0
-        a = self.vp.a[f]
-        e = np.exp(psi / a)
+        if tau < 0:
+            return toms748(lambda V: tau + self.friction_law(f, V, psi) + self.cp.eta*V, 0, -tau/self.cp.eta, xtol=1e-100)
         
-        V = toms748((-tau-f)/e, -tau/e, tau/e, maxiter=100000, xtol=2e-100)
-        return V
+        elif tau > 0:
+            return toms748(lambda V: tau + self.friction_law(f, V, psi) + self.cp.eta*V, -tau/self.cp.eta, 0, xtol=1e-100)
+        
+        else:
+            return 0.0
+
 
     def state_law(self, f, V, psi):
         """Evaluate ageing law.
