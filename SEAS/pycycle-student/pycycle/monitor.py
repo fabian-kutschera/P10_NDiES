@@ -21,7 +21,7 @@ class Monitor:
     def __init__(self, thresholds, u_ax, u_fig, v_ax, v_fig):
         self.t          = []
         self.v          = []
-        self.sol_stack  = []
+        self.sol_stack  = [] #array of solutions for slip
         self.plt_stack  = []
         self.thresholds = thresholds
         self.u_ax       = u_ax
