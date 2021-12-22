@@ -1,6 +1,20 @@
 # How to install packages and dependencies?
 
-Execute the following commands line by line:
+The installation of all dependencies is a real bottleneck. Try the following:
+
+#### Version 1
+
+1. conda create -n python37 python=3.7.3
+2. conda activate python37
+3. pip install pickle-mixin
+4. pip install cython numpy
+5. pip install jupyter matplotlib obspy geopy
+6. conda install basemap
+7. pip install mpld3
+8. pip install pydsm==0.14.0.0
+9. conda install obspy
+
+#### Version 2
 
 1. conda create -n python373 python=3.7.3
 2. conda activate python373
